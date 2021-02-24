@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "A Web Page";
+    <link rel="stylesheet" href="~/css/style.css">
+}
+@model List<Dish>
+
+<div class="text-center">
+    <div class="buttonClass">
+
+        <button class="btn btn-outline-primary"><a href="/dishes/new">Add a Dish</a></button>
+    </div>
+    <div class="header">
+        <h2><a href="/">Chefs</a></h2>
+        <div class="divider"></div>
+        <h2>Dishes</h2>
+
+    </div>
+
+    <h1>Yum, take a look at our tasty dishes!</h1>
+    <div class="scrollbar" style="height: 30rem; overflow: auto;">
+
+
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Chef</th>
+                <th>Tastiness</th>
+                <th>Callories</th>
+            </tr>
+            @foreach (var Dish in Model)
+            {
+                <tr>
+                    <td>@Dish.Name</td>
+                    <td>@Dish.Creator.FirstName @Dish.Creator.LastName</td>
+                    <td>@Dish.Tastiness</td>
+                    <td>@Dish.Calories</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>

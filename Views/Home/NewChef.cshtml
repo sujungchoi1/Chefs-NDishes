@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "New Chef";
+    <link rel="stylesheet" href="~/css/form.css">
+}
+
+
+@model Chef
+
+<div class="text-center">
+        <partial name="HomePartial" />
+    <h1>Add a New Chef!</h1>
+    <form asp-action="CreateChef" asp-controller="Home" method="post">
+        <div class="formBox">
+
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label"></label>
+                <span asp-validation-for="FirstName"></span>
+                <div class="col">
+                    <input asp-for="FirstName" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label"></label>
+                <span asp-validation-for="LastName"></span>
+                <div class="col">
+                    <input asp-for="LastName" class="form-control">
+                </div>
+            </div>
+            
+        </div>
+        <div class="formBox">
+            <div class="mb-3">
+                <label asp-for="DOB" class="form-label"></label>
+                <span asp-validation-for="DOB"></span>
+                <div class="col">
+                    <input type="date" asp-for="DOB" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Chef</button>
+        </div>
+    </form>
+</div>

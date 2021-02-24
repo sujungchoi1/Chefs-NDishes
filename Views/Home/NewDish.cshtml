@@ -1,0 +1,66 @@
+@{
+    @* ViewData["Title"] = "New Dish"; *@
+    <link rel="stylesheet" href="~/css/form.css">
+}
+@using ChefAndDishes.Models
+@model Dish
+
+<div class="text-center">
+    <partial name="HomePartial" />
+    <h1>Add a New Dish!</h1>
+    <form asp-action="CreateDish" asp-controller="Home" method="post">
+        <div class="formBox">
+            <div class="mb-3">
+                <label asp-for="ChefId" class="form-label"></label>
+                <span asp-validation-for="ChefId" class="text-danger"></span>
+                <select asp-for="ChefId" class="form-control">
+                    @foreach (Chef c in ViewBag.ChefInfo)
+                    {
+                        <option value="@c.ChefId">@c.FirstName @c.LastName</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <span asp-validation-for="Name"></span>
+                <div class="col">
+                    <input asp-for="Name" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Calories" class="form-label"></label>
+                <span asp-validation-for="Calories"></span>
+                <div class="col">
+                    <input type="number" asp-for="Calories" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="formBox">
+            <div class="mb-3">
+                <label asp-for="Tastiness" class="form-label"></label>
+                <span asp-validation-for="Tastiness"></span>
+                <div class="col">
+
+                    <select type="number" asp-for="Tastiness" size="1" class="form-select form-select-lg mb-3">
+                        <option selected disabled>Select Tastiness</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="formBox">
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <span asp-validation-for="Description"></span>
+                <div class="col">
+                    <textarea asp-for="Description" class="form-control" rows="8"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Dish</button>
+        </div>
+    </form>
+</div>
